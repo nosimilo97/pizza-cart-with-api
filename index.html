@@ -73,15 +73,46 @@
         <button class="history" @click="saveHistory(); showHistory=!showHistory" x-show="!showHistory">Click to view History</button>
        <div x-show="showHistory">
         <h2>Historic Purchases</h2>
+
         <table>
+          <thead>
+              <tr>
+                  <th>Username</th>
+                  <th>Status</th>
+                  <th>Cart Code</th>
+                  <th>Pizza Type</th>
+                  <th>Size</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Total</th>
+              </tr>
+          </thead>
+          <tbody>
+              <template x-for="cart in history" :key="cart.cart_code">
+                  <template x-for="pizza in cart.pizzas" :key="pizza.id">
+                      <tr>
+                          <td x-text="cart.username"></td>
+                          <td x-text="cart.status"></td>
+                          <td x-text="cart.cart_code"></td>
+                          <td x-text="pizza.type"></td>
+                          <td x-text="pizza.size"></td>
+                          <td x-text="pizza.qty"></td>
+                          <td x-text="pizza.price.toFixed(2)"></td>
+                          <td x-text="(pizza.price * pizza.qty).toFixed(2)"></td>
+                      </tr>
+                  </template>
+              </template>
+          </tbody>
+      </table>
+  
+
+        <!-- <table>
           <tr>
           <th>flavour</th>
           <th>Size</th>
           <th>Qty</th> 
             <th>Price</th>
         </tr>
-
-       
 
         <template x-for="carts in history">
           <tr>
@@ -110,10 +141,7 @@
               <span x-text="carts.status"></span>
             </td>
             </tr>
-       
-        
-
-       </table>
+       </table> -->
 </div>
       </div>
       <div x-show="username && cartId" class="f-pizza">
