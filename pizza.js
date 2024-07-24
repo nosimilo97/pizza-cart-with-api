@@ -14,6 +14,7 @@ showHistory: false,
       featuredPizzas: [],
       pizzaId: 0,
       cartData: [],
+      cartsData: [],
       login() {
         if (this.username.length > 2) {
          this.setFeaturedPizza(this.pizzaId);
@@ -170,7 +171,7 @@ showHistory: false,
 
             this.startConfetti();
             // localStorage.setItem("History", JSON.stringify(this.cartData));
-
+            this.saveHistory();
             setTimeout(() => {
               this.message = "";
               this.cartPizzas = [];
@@ -192,7 +193,6 @@ showHistory: false,
       saveHistory() {
         axios    
         .get(`https://pizza-api.projectcodex.net/api/pizza-cart/username/${this.username}`
-
         )
         .then((res) => {
           const carts =res.data;
@@ -206,7 +206,7 @@ showHistory: false,
               .then((res) => {
                 const cartsData = res.data;
                 console.log('cart Data:', cartsData);
-                this.history = [...cartsData, pizzas, ...this.history];
+                this.history = [...cartsData.pizzas, ...this.history];
                 this.saveHistory.push(cartsData);
               });
             }

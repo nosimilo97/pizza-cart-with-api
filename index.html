@@ -75,35 +75,38 @@
         <h2>Historic Purchases</h2>
         <table>
           <tr>
-          <th>Username</th>
-           <th>Status</th>
-          <th>Total</th>
           <th>flavour</th>
           <th>Size</th>
           <th>Price</th>
           <th>Qty</th>  
         </tr>
 
-        <tr>
-          <td x-text="data.username"></td>
-            <td x-text="data.status"></td>
-            <td x-text="data.total"></td>
-        </tr>
+       
 
-        <template x-for="data in history">
+        <template x-for="carts in history">
           <tr>
-            <td x-text="data.flavour"></td>
-            <td x-text="data.size"></td>
-            <td x-text="data.price"></td>
-            <td x-text="data.qty"></td>
+            <td x-text="carts.flavour"></td>
+            <td x-text="carts.size"></td> 
+            <td x-text="carts.qty"></td>
+            <td x-text="carts.price"></td>
           </tr>
-        </template>
+        </template> 
+
         <tr>
-          <td colspan="4">Total</td>
-          <td colspan="2" style="float: right">
-            R <span x-text="data.total"></span>
+          <td colspan="3">Username </td>
+          <td colspan="3">
+            <span x-text="carts.username"></span>
           </td>
-        </tr> 
+            <td colspan="3" >Status</td>
+            <td colspan="3">
+              <span x-text="carts.status"></span>
+            </td>
+        <td colspan="4">Total</td>
+          <td colspan="2" style="float: right">
+            R <span x-text="carts.total"></span>
+          </td>
+        </tr>
+        
 
        </table>
 </div>
