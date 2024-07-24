@@ -55,7 +55,7 @@
           </template>
           <tr>
             <td colspan="4">Total</td>
-            <td colspan="2" style="float: right">
+            <td colspan="1" style="float: right">
               R <span x-text="cartTotal"></span>
             </td>
           </tr>
@@ -77,8 +77,8 @@
           <tr>
           <th>flavour</th>
           <th>Size</th>
-          <th>Price</th>
-          <th>Qty</th>  
+          <th>Qty</th> 
+            <th>Price</th>
         </tr>
 
        
@@ -88,24 +88,29 @@
             <td x-text="carts.flavour"></td>
             <td x-text="carts.size"></td> 
             <td x-text="carts.qty"></td>
-            <td x-text="carts.price"></td>
+            <td >R <span x-text="carts.price"></span></td>
           </tr>
         </template> 
 
+        <tr>
+          <td colspan="3">Total</td>
+          <td colspan="3">
+            R <span x-text="carts.total"></span>
+          </td>
+        </tr> 
         <tr>
           <td colspan="3">Username </td>
           <td colspan="3">
             <span x-text="carts.username"></span>
           </td>
-            <td colspan="3" >Status</td>
+         </tr>
+            <tr> 
+              <td colspan="3" >Status</td>
             <td colspan="3">
               <span x-text="carts.status"></span>
             </td>
-        <td colspan="4">Total</td>
-          <td colspan="2" style="float: right">
-            R <span x-text="carts.total"></span>
-          </td>
-        </tr>
+            </tr>
+       
         
 
        </table>

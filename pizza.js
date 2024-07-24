@@ -207,7 +207,7 @@ showHistory: false,
                 const cartsData = res.data;
                 console.log('cart Data:', cartsData);
                 this.history = [...cartsData.pizzas, ...this.history];
-                this.saveHistory.push(cartsData);
+                this.history.push(cartsData);
               });
             }
           });
