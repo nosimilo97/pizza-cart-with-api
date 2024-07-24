@@ -94,11 +94,11 @@
                           <td x-text="cart.username"></td>
                           <td x-text="cart.status"></td>
                           <td x-text="cart.cart_code"></td>
-                          <td x-text="pizza.type"></td>
+                          <td x-text="pizza.flavour"></td>
                           <td x-text="pizza.size"></td>
                           <td x-text="pizza.qty"></td>
-                          <td x-text="pizza.price.toFixed(2)"></td>
-                          <td x-text="(pizza.price * pizza.qty).toFixed(2)"></td>
+                          <td >R<span x-text="pizza.price.toFixed(2)"></span></td>
+                          <td >R<span x-text="(pizza.price * pizza.qty).toFixed(2)"></span></td>
                       </tr>
                   </template>
               </template>
@@ -111,10 +111,10 @@
       <div  class="pizza_prices">
         <template x-for="pizza in featuredPizzas">
           <div class="medium_pizza">
-            <img src="large_pizza.png" width="125" />
-            <h4 x-text="pizza.flavour"></h4>
-            <h3>R <span x-text="pizza.price"></span></h3>
-            <p x-text="pizza.size"></p>
+            <img class="f-img" src="large_pizza.png" width="125" />
+            <h4 class="f-flavour" x-text="pizza.flavour"></h4>
+            <h3 class="f-price">R <span x-text="pizza.price"></span></h3>
+            <p  class="f-size" x-text="pizza.size"></p>
             <button @click=" addPizzaToCart(pizza.id); scrollUp(); showCart=true" class="buy">Buy</button>
           </div>
         </template>
@@ -126,9 +126,9 @@
         <template x-for="pizza in pizzas">
           <div class="pizza">
             <img src="medium_pizza.png" width="125" />
-            <h5 x-text="pizza.flavour"></h5>
-            <span x-text="pizza.size"></span>
-            <h5>R<span x-text="pizza.price"></span></h5>
+            <h5 class="flavour" x-text="pizza.flavour"></h5>
+            <span  class="size" x-text="pizza.size"></span>
+            <h5 class="price">R<span x-text="pizza.price"></span></h5>
             <div> 
               <button class="btn" @click="addPizzaToCart(pizza.id); scrollUp(); showCart = true">Add to cart</button>
             </div>

@@ -1,34 +1,24 @@
 .pizza {
-    /* border: 1px solid hsl(339, 73%, 54%) ; */
+  
     border: 1px solid sienna ;
     margin-bottom: 2em;
     padding: 1em;
-    /* margin-right: 17em; */
-/* display: flex; */
+   
 justify-content: space-between;
- /* background-color: hsla(339, 73%, 54%, 0.5); */
- /* background-color: hsl(34, 44%, 69%,60%);  */
+
   background-color: hsl(19, 56%, 40%, 60%);
- /* background-color: hsl(0, 68%, 42%, 60%); */
+
  border-radius: 1.5em;
  color: antiquewhite;
- transition: transform 0.3s;
  
 }
 
-/* .buy {
-    padding: 1.3em;
-    position: relative;
-    left: 250px;
-    bottom: 75px;
-    text-transform: uppercase;
-} */
 
 
 
 .medium_pizza {
     background-color:  rgba(226, 174, 61, 0.7);
-    /* background-color:  hsl(19, 56%, 40%, 60%); */
+   
     border-radius: 1.5em;
     flex: 1;
     border: 1px solid  rgba(226, 174, 61, 0.7);
@@ -63,10 +53,8 @@ justify-content: space-between;
 }
 
 .pizza :hover {
- 
+   color: red;
      transition: background-color 0.3s ease, transform 0.3s ease;
-    /* text-transform: uppercase; */
-    color: red;
     transform: scale(1.1); 
     transition: transform 0.3s, color 0.3s;
 cursor: pointer;
@@ -88,12 +76,9 @@ cursor: pointer;
     border-radius: 1em;
     
 }
-/* button :hover {
-    cursor: pointer;
-   
-} */
+
 body {
-    /* background-color: lightblue; */
+    
     background-image: url(pizza-mage.jpg);
     background-repeat: no-repeat;
     background-position: center;
@@ -102,13 +87,13 @@ body {
 }
 
 .table-content {
-    /* background-color:  rgba(224, 53, 113, 0.5); */
+  
     margin-bottom: 1em;
     margin-top: 2em;
     padding: 1.5em;
     background-color: hsl(19, 56%, 40%, 60%);
     border-radius: 3em;
-    /* color: #E03571; */
+   
     color: hsl(19, 56%, 40%);
 }
 th {
@@ -121,7 +106,7 @@ td {
 table, th, td {
     border: 1px solid hsl(19, 56%, 40%);
     border-collapse: collapse;
-   /* border-radius: 1em; */
+  
     padding: 8px;
      
 }
@@ -131,9 +116,7 @@ table {
      background-color: rgba(211, 211, 211, 0.7);
      margin: 1em;
     border-radius: 3px;
-    /* opacity: 1em; */
-
-     /* background-color: #E06733; */
+    
 }
 h1, h2 {
     color: white;
@@ -147,15 +130,13 @@ h5 {
     font-size: larger;
 }
 
-.size {
+.size, .price, .flavour {
     font-size: larger;
+    position: relative;
+    top: 25px ;
    
 }
 
-/* strong {
-    position: relative;
-    top: 45px;
-} */
 
 .payButton {
     padding-left: 2em;
@@ -200,21 +181,26 @@ h5 {
     font-size: larger;
 }
 
+
 @media (min-Width: 960px ) {
 
+.buy :hover {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    transform: scale(1.1); 
+    transition: transform 0.3s, color 0.3s;
+cursor: pointer;
+}
     .buy {
-        /* background-color: rgba(226, 174, 61); */
-        /* background-color: lightgrey; */
+      
         border: 1px solid  lightgrey;
         padding: 1em;
-       
         border-radius: 1em;
-        /* padding: 1.3em; */
         position: relative;
         left: 200px;
         bottom: 75px;
         text-transform: uppercase;
     }
+ 
 
     .pizza_prices {
         display: flex;
@@ -244,12 +230,21 @@ h5 {
 @media (max-width: 960px) {
     .pizza {
         text-align: center;
-        /* margin: 0 auto; */
+      
     } 
+
     table {
-        width: 50%;
+        width: 30%;
+      
+    }
+    .f-img {
+        width: 80px;
     }
 
+   .f-price, .f-size, .f-flavour {
+position: relative;
+top: 20px;
+    }
     .btn {
         margin-top: 2em;
     }
@@ -281,6 +276,3 @@ h5 {
     
 }
 
-.pizza-item{
-    margin: 1em;
-}
