@@ -42,7 +42,7 @@ content-type: application/json
 
 {
 	"cart_code" : "JMcOcinSZk",
-	"pizza_id" : 7
+	"pizza_id" : 5
 }
 
 ### GET all the carts for a given user
@@ -61,7 +61,7 @@ content-type: application/json
 
 {
 	"cart_code" : "JMcOcinSZk",
-	"amount" : 200
+	"amount" : 400
 }
 
 ### Get featured pizzas
