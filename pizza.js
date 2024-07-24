@@ -2,7 +2,7 @@ document.addEventListener("alpine:init", () => {
   Alpine.data("pizzaCart", () => {
     return {
       tittle: "Pizza Cart API",
-
+showHistory: false,
       pizzas: [],
       username: "",
       // cartId: 'JMcOcinSZk',
@@ -14,10 +14,12 @@ document.addEventListener("alpine:init", () => {
       message: "",
       featuredPizzas: [],
       pizzaId: 0,
-
+      cartData: [],
       login() {
         if (this.username.length > 2) {
+         this.setFeaturedPizza(this.pizzaId);
           this.createCart();
+          
         } else {
           alert("username is too short");
         }
@@ -56,7 +58,6 @@ document.addEventListener("alpine:init", () => {
             localStorage.setItem("cartId", this.cartId);
           });
         }
-
         console.log({ cartId: this.cartId });
       },
       getCart() {
@@ -65,10 +66,9 @@ document.addEventListener("alpine:init", () => {
       },
       showCartData() {
         this.getCart().then((result) => {
-          const cartData = result.data;
-          this.cartPizzas = cartData.pizzas;
-          // console.log(cartData.pizzas);
-          this.cartTotal = cartData.total.toFixed(2);
+          this.cartData = result.data;
+          this.cartPizzas = this.cartData.pizzas;
+          this.cartTotal = this.cartData.total.toFixed(2);
         });
       },
       addPizza(pizzaId) {
@@ -110,7 +110,7 @@ document.addEventListener("alpine:init", () => {
         axios
           .get(featuredPizzasURL, { headers: { "Cache-control": "no-store" } })
           .then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
             if (response.data && Array.isArray(response.data.pizzas)) {
               this.featuredPizzas = response.data.pizzas.slice(0, 3);
             } else {
@@ -129,7 +129,7 @@ document.addEventListener("alpine:init", () => {
             { headers: { "Cache-Control": "no-store" } }
           )
           .then(() => {
-            console.log(this.getFeaturedPizzas());
+            // console.log(this.getFeaturedPizzas());
             this.getFeaturedPizzas();
           });
       },
@@ -142,13 +142,13 @@ document.addEventListener("alpine:init", () => {
             this.pizzas = result.data.pizzas;
           });
           if (!this.cartId) {
-            this.setFeaturedPizza(this.pizzaId);
+            // this.setFeaturedPizza(this.pizzaId);
             this.createCart();
             this.showCartData();
             // });
           }
-          this.showCartData();
-          console.log(this.setFeaturedPizza(this.pizzaId));
+          this.showCartData(); 
+          console.log(this.getFeaturedPizzas());
        
         // console.log({ cartId: this.cartId });
       },
@@ -162,6 +162,7 @@ document.addEventListener("alpine:init", () => {
 
       // },
 
+
       addPizzaToCart(pizzaId) {
         // alert(pizzaId)
         this.addPizza(pizzaId).then(() => {
@@ -169,7 +170,7 @@ document.addEventListener("alpine:init", () => {
         });
       },
       payForCart() {
-        // alert("Pay Now!")
+        // alert("Pay Now!") 
         // this. shoppingCart(paymentAmount);
         this.pay(this.paymentAmount).then((result) => {
           if (result.data.status == "failure") {
@@ -177,7 +178,10 @@ document.addEventListener("alpine:init", () => {
             setTimeout(() => (this.message = ""), 3000);
           } else {
             this.message = "Payment Recieved!";
+
             this.startConfetti();
+            localStorage.setItem("History", JSON.stringify(this.cartData));
+
             setTimeout(() => {
               this.message = "";
               this.cartPizzas = [];
@@ -195,6 +199,13 @@ document.addEventListener("alpine:init", () => {
           this.showCartData();
         });
       },
+
+      saveHistory() {
+      // alert("inside");
+        let data = JSON.parse(localStorage.getItem("History"));
+ this.showCartData();
+      console.log(data);
+      }
     };
   });
 });

@@ -42,7 +42,7 @@ content-type: application/json
 
 {
 	"cart_code" : "JMcOcinSZk",
-	"pizza_id" : 3
+	"pizza_id" : 7
 }
 
 ### GET all the carts for a given user
@@ -77,5 +77,5 @@ content-type: application/json
 
 {
 	"username" : "nosimilo97",
-	"pizza_id" : 7
+	"pizza_id" : 5
 }

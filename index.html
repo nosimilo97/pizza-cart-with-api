@@ -69,20 +69,55 @@
             </td>
           </tr>
         </table>
-      </div>
 
-      <div x-show="username && cartId" class="pizza_prices">
+        <button class="history" @click="saveHistory(); showHistory=!showHistory" x-show="!showHistory">Click to view History</button>
+       <div x-show="showHistory">
+        <h2>Historic Purchases</h2>
+        <table>
+          <tr>
+          <th>Username</th>
+          <th>flavour</th>
+          <th>Size</th>
+          <th>Price</th>
+          <th>Qty</th>  
+          <th>Status</th>
+          <th>Total</th>
+        </tr>
+        <template x-for="data in cartData">
+          <tr>
+            <td x-text="data.username"></td>
+            <td x-text="data.flavour"></td>
+            <td x-text="data.size"></td>
+            <td x-text="data.price"></td>
+            <td x-text="data.qty"></td>
+            <td x-text="data.status"></td>
+            <td x-text="data.total"></td>
+          </tr>
+        </template>
+        <tr>
+          <td colspan="4">Total</td>
+          <td colspan="2" style="float: right">
+            R <span x-text="data.total"></span>
+          </td>
+        </tr> 
+
+       </table>
+</div>
+      </div>
+      <div x-show="username && cartId" class="f-pizza">
+        <h2 class="featured-pizza">Featured Pizzas 🍕</h2>
+      <div  class="pizza_prices">
         <template x-for="pizza in featuredPizzas">
-          <div class="medium_pizza flavor">
+          <div class="medium_pizza">
             <img src="large_pizza.png" width="125" />
             <h4 x-text="pizza.flavour"></h4>
             <h3>R <span x-text="pizza.price"></span></h3>
             <p x-text="pizza.size"></p>
-            <button @click=" scrollUp()" class="buy">Buy</button>
+            <button @click=" addPizzaToCart(pizza.id); scrollUp(); showCart=true" class="buy">Buy</button>
           </div>
         </template>
-      </div>
-
+      </div> 
+</div>
      
       <div   x-show="username && cartId" class="">
         <h1 x-text="title"></h1>

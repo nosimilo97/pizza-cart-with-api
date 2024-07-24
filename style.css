@@ -12,6 +12,7 @@ justify-content: space-between;
  /* background-color: hsl(0, 68%, 42%, 60%); */
  border-radius: 1.5em;
  color: antiquewhite;
+ transition: transform 0.3s;
  
 }
 
@@ -23,37 +24,44 @@ justify-content: space-between;
     text-transform: uppercase;
 } */
 
-/* .pizza_prices {
-    display: flex;
-    /* padding: 1.5em; */
-    /* margin-top: 2em;
-} */ 
 
-/* .medium_pizza {
+
+.medium_pizza {
     background-color:  rgba(226, 174, 61, 0.7);
-    border-radius: 4px;
+    /* background-color:  hsl(19, 56%, 40%, 60%); */
+    border-radius: 1.5em;
     flex: 1;
+    border: 1px solid  rgba(226, 174, 61, 0.7);
+    margin: 0.5em;
+    padding: 1em;
+    color: black;
 }
 
-.large_pizza {
-    background-color: rgba(224, 103, 51, 0.7);
-    border-radius: 4px;
-    
-    flex: 1;
-}
 
-.small_pizza {
-    background-color: rgba(224, 53, 113, 0.7);
-    border-radius: 4px;
-    
-    flex: 1;
-} */
 
 .container {
    margin-left: 8em;
    margin-right: 8em;
 
 }
+.f-pizza {
+    border: 1px solid hsl(19, 56%, 40%, 60%) ;
+    padding: 1em;
+    margin-top: 1.5em;
+    background-color:  hsl(19, 56%, 40%, 60%);
+    border-radius: 1.5em;
+}
+
+.featured-pizza {
+    background-color: rgba(211, 211, 211, 0.7);
+    border-radius: 0.3em;
+    margin-top: 1em;
+
+     border: 1px solid lightgrey;
+    padding: 0.5em;
+    color: sienna;
+}
+
 .pizza :hover {
  
      transition: background-color 0.3s ease, transform 0.3s ease;
@@ -62,6 +70,15 @@ justify-content: space-between;
     transform: scale(1.1); 
     transition: transform 0.3s, color 0.3s;
 cursor: pointer;
+}
+.history {
+    background-color: lightgrey;
+    border: 1px solid  lightgrey;
+    padding: 1em;
+   text-align: center;
+    border-radius: 1em;
+    display: block;
+    margin: 0 auto;
 }
 .btn {
     background-color: lightgrey;
@@ -186,16 +203,22 @@ h5 {
 @media (min-Width: 960px ) {
 
     .buy {
-        padding: 1.3em;
+        /* background-color: rgba(226, 174, 61); */
+        /* background-color: lightgrey; */
+        border: 1px solid  lightgrey;
+        padding: 1em;
+       
+        border-radius: 1em;
+        /* padding: 1.3em; */
         position: relative;
-        left: 250px;
+        left: 200px;
         bottom: 75px;
         text-transform: uppercase;
     }
 
     .pizza_prices {
         display: flex;
-        /* padding: 1.5em; */
+       
         margin-top: 2em;
     }
     .pizza {
@@ -231,7 +254,7 @@ h5 {
         margin-top: 2em;
     }
 
-    .large_pizza, .medium_pizza, .small_pizza {
+     .medium_pizza {
         display: flex;
         justify-content: space-evenly;
 
