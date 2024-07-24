@@ -76,22 +76,26 @@
         <table>
           <tr>
           <th>Username</th>
+           <th>Status</th>
+          <th>Total</th>
           <th>flavour</th>
           <th>Size</th>
           <th>Price</th>
           <th>Qty</th>  
-          <th>Status</th>
-          <th>Total</th>
         </tr>
+
+        <tr>
+          <td x-text="data.username"></td>
+            <td x-text="data.status"></td>
+            <td x-text="data.total"></td>
+        </tr>
+
         <template x-for="data in cartData">
           <tr>
-            <td x-text="data.username"></td>
             <td x-text="data.flavour"></td>
             <td x-text="data.size"></td>
             <td x-text="data.price"></td>
             <td x-text="data.qty"></td>
-            <td x-text="data.status"></td>
-            <td x-text="data.total"></td>
           </tr>
         </template>
         <tr>

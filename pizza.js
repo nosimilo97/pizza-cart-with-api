@@ -1,11 +1,10 @@
 document.addEventListener("alpine:init", () => {
   Alpine.data("pizzaCart", () => {
     return {
-      tittle: "Pizza Cart API",
+     
 showHistory: false,
       pizzas: [],
       username: "",
-      // cartId: 'JMcOcinSZk',
       cartId: "",
       cartPizzas: [],
       showCart: false,
@@ -44,7 +43,7 @@ showHistory: false,
       },
       createCart() {
         if (!this.username) {
-          // this.cartId =  'No username to create a cart for'
+         
           return;
         }
 
@@ -81,9 +80,7 @@ showHistory: false,
             console.log(result);
             return result;
           });
-        // .then (() => {
-        //     this.showCartData();
-        // })
+        
       },
       pay(amount) {
         return axios.post(
@@ -110,7 +107,7 @@ showHistory: false,
         axios
           .get(featuredPizzasURL, { headers: { "Cache-control": "no-store" } })
           .then((response) => {
-            // console.log(response.data);
+     
             if (response.data && Array.isArray(response.data.pizzas)) {
               this.featuredPizzas = response.data.pizzas.slice(0, 3);
             } else {
@@ -129,7 +126,7 @@ showHistory: false,
             { headers: { "Cache-Control": "no-store" } }
           )
           .then(() => {
-            // console.log(this.getFeaturedPizzas());
+            
             this.getFeaturedPizzas();
           });
       },
@@ -142,36 +139,28 @@ showHistory: false,
             this.pizzas = result.data.pizzas;
           });
           if (!this.cartId) {
-            // this.setFeaturedPizza(this.pizzaId);
+            
             this.createCart();
             this.showCartData();
-            // });
+            
           }
           this.showCartData(); 
           console.log(this.getFeaturedPizzas());
        
-        // console.log({ cartId: this.cartId });
+        
       },
 
-      // addPizzaToCart(shoppingCart()) {
-      //     // alert(pizzaId)
-      //     this.addPizza(pizzaId)
-      //         .then(() => {
-      //             this.showCartData();
-      //         })
-
-      // },
+     
 
 
       addPizzaToCart(pizzaId) {
-        // alert(pizzaId)
+       
         this.addPizza(pizzaId).then(() => {
           this.showCartData();
         });
       },
       payForCart() {
-        // alert("Pay Now!") 
-        // this. shoppingCart(paymentAmount);
+       
         this.pay(this.paymentAmount).then((result) => {
           if (result.data.status == "failure") {
             this.message = result.data.message;
@@ -201,7 +190,7 @@ showHistory: false,
       },
 
       saveHistory() {
-      // alert("inside");
+     
         let data = JSON.parse(localStorage.getItem("History"));
  this.showCartData();
       console.log(data);
