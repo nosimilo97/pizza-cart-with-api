@@ -16,9 +16,11 @@ document.addEventListener("alpine:init", () => {
       cartData: [],
       cartsData: [],
       carts: [],
+      isloggedIn: false,
 
       login() {
         if (this.username.length > 2) {
+          localStorage['username'] =this.username;
           this.setFeaturedPizza(this.pizzaId);
           this.createCart();
         } else {
@@ -27,11 +29,13 @@ document.addEventListener("alpine:init", () => {
       },
       logout() {
         if (confirm("Do you want to logout?")) {
-          this.username = "";
-          localStorage["cartId"] = "";
+          this.username = '';
+          this.cartId = '';
+          localStorage["cartId"] = '';
+          localStorage['username'] = '';
         }
       },
-
+ 
       startConfetti() {
         confetti({
           particleCount: 100,
@@ -53,12 +57,14 @@ document.addEventListener("alpine:init", () => {
           this.cartId = cartId;
         } else {
           const createCartURL = `https://pizza-api.projectcodex.net/api/pizza-cart/create?username=${this.username}`;
-          return axios.get(createCartURL).then((result) => {
+          return axios.get(createCartURL)
+          .then(result => {
             this.cartId = result.data.cart_code;
-            localStorage.setItem("cartId", this.cartId);
+            localStorage['cartId'] = this.cartId;
+            // localStorage.setItem("cartId", this.cartId);
           });
         }
-        console.log({ cartId: this.cartId });
+        // console.log({ cartId: this.cartId });
       },
       getCart() {
         const getCartURL = `https://pizza-api.projectcodex.net/api/pizza-cart/${this.cartId}/get`;
@@ -130,6 +136,12 @@ document.addEventListener("alpine:init", () => {
       },
 
       init() {
+
+        const storedUsername = localStorage['username'];
+        if (storedUsername) {
+          this.username = storedUsername;
+          // this.isloggedIn = true;
+        }
         axios
           .get(`https://pizza-api.projectcodex.net/api/pizzas`)
           .then((result) => {
